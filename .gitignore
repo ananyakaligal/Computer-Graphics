@@ -1,0 +1,17 @@
+# Ignore compiled object files
+*.o
+
+# Ignore the default executable
+a.out
+
+# Ignore any output files, including executables
+*.out
+
+# Ignore static libraries
+*.a
+
+# Ignore shared libraries
+*.so
+
+# Ignore dependency files (if generated)
+*.d
