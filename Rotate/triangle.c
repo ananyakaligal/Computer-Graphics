@@ -58,6 +58,15 @@ void display() {
     glutSwapBuffers();
 }
 
+void update(int value) {
+    angle += 1.0; // Increment angle for rotation
+    if (angle >= 360.0) {
+        angle -= 360.0;
+    }
+    glutPostRedisplay();
+    glutTimerFunc(16, update, 0); // Refresh at ~60 FPS
+}
+
 void init() {
     glClearColor(0.0, 0.0, 0.0, 1.0);
     glMatrixMode(GL_PROJECTION);
@@ -67,7 +76,7 @@ void init() {
 }
 
 int main(int argc, char** argv) {
-    printf("Enter rotation angle: ");
+    printf("Enter initial rotation angle: ");
     scanf("%f", &angle);
 
     glutInit(&argc, argv);
@@ -76,6 +85,8 @@ int main(int argc, char** argv) {
     glutCreateWindow("Rotating Triangle");
     init();
     glutDisplayFunc(display);
+    glutTimerFunc(16, update, 0); // Start rotation updates
     glutMainLoop();
     return 0;
 }
+
